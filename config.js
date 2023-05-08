@@ -1,11 +1,13 @@
 // @ts-check
 
+require('dotenv').config();
+
 const config = {
-  endpoint: "<Your Azure Cosmos account URI>",
-  key: "<Your Azure Cosmos account key>",
-  databaseId: "Tasks",
-  containerId: "Items",
-  partitionKey: { kind: "Hash", paths: ["/category"] }
+  endpoint: process.env.URI,
+  key: process.env.KEY,
+  databaseId: "DatabaseNodeJS",
+  containerId: "ContainerNodeJS",
+  partitionKey: { kind: "Hash", paths: ["/id"] }
 };
 
 module.exports = config;

@@ -7,16 +7,15 @@ const dbContext = require("./data/databaseContext");
 
 //  <DefineNewItem>
 const newItem = {
-  id: "3",
-  category: "fun",
+  id: "42",
+  category: "random",
   name: "Cosmos DB",
-  description: "Complete Cosmos DB Node.js Quickstart ⚡",
+  description: "Complete Cosmos DB Node.js Quickstart ⚡ [⭐️🌟✨⚡☄️💥🔥🌪️🌈☀️ Å å Ø ø Æ æ 葉繼問 👊✊🤛🤜🫷🫸🫳🫴🦶]",
   isComplete: false
 };
 //  </DefineNewItem>
 
 async function main() {
-  
   // <CreateClientObjectDatabaseContainer>
   const { endpoint, key, databaseId, containerId } = config;
 
@@ -28,7 +27,7 @@ async function main() {
   // Make sure Tasks database is already setup. If not, create it.
   await dbContext.create(client, databaseId, containerId);
   // </CreateClientObjectDatabaseContainer>
-  
+
   try {
     // <QueryItems>
     console.log(`Querying container: Items`);
@@ -37,7 +36,7 @@ async function main() {
     const querySpec = {
       query: "SELECT * from c"
     };
-    
+
     // read all items in the Items container
     const { resources: items } = await container.items
       .query(querySpec)
@@ -47,16 +46,16 @@ async function main() {
       console.log(`${item.id} - ${item.description}`);
     });
     // </QueryItems>
-    
+
     // <CreateItem>
     /** Create new item
      * newItem is defined at the top of this file
      */
     const { resource: createdItem } = await container.items.create(newItem);
-    
+
     console.log(`\r\nCreated new item: ${createdItem.id} - ${createdItem.description}\r\n`);
     // </CreateItem>
-    
+
     // <UpdateItem>
     /** Update item
      * Pull the id and partition key value from the newly created item.
@@ -70,19 +69,19 @@ async function main() {
       .item(id, category)
       .replace(createdItem);
 
-    console.log(`Updated item: ${updatedItem.id} - ${updatedItem.description}`); 
+    console.log(`Updated item: ${updatedItem.id} - ${updatedItem.description}`);
     console.log(`Updated isComplete to ${updatedItem.isComplete}\r\n`);
     // </UpdateItem>
-    
-    // <DeleteItem>    
+
+    // <DeleteItem>
     /**
      * Delete item
      * Pass the id and partition key value to delete the item
      */
-    const { resource: result } = await container.item(id, category).delete();
-    console.log(`Deleted item with id: ${id}`);
-    // </DeleteItem>  
-    
+    // const { resource: result } = await container.item(id, category).delete();
+    // console.log(`Deleted item with id: ${id}`);
+    // </DeleteItem>
+
   } catch (err) {
     console.log(err.message);
   }

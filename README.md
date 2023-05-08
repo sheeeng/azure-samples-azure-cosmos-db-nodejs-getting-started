@@ -12,6 +12,17 @@ urlFragment: azure-cosmos-db-sql-api-nodejs-getting-started
 
 Azure Cosmos DB is a globally distributed multi-model database. One of the supported APIs is the SQL API, which provides a JSON document model with SQL querying and JavaScript procedural logic. This sample shows you how to use Azure Cosmos DB with the SQL API to store and access data from a Node.js application.
 
+## Prerequisites
+
+- Create `.env` file with the following similar content.
+
+```shell
+URI='CHANGEME_AZURE_COSMOS_ACCOUNT_URI'
+KEY='CHANGEME_AZURE_COSMOS_ACCOUNT_KEY'
+```
+
+- Manually create `Items` container under `Tasks` database inside Azure Portal due to this [issue](https://github.com/Azure/azure-cosmos-dotnet-v2/issues/861).
+
 ## Running this sample
 
 This sample is designed to be run as part of the article, "[Quickstart: use Node.js to query an Azure Cosmos DB SQL API Database](https://docs.microsoft.com/en-us/azure/cosmos-db/create-sql-api-nodejs)".
